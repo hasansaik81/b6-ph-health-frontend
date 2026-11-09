@@ -1,5 +1,5 @@
 export interface ILoginResponse {
-    tokent:string
+    token:string
     accessToken: string;
     refreshToken: string;
     user: {

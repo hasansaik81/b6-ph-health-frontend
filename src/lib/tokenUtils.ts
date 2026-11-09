@@ -1,5 +1,5 @@
   import jwt, { JwtPayload } from "jsonwebtoken";
-import { setCookie } from "./cookieUtis";
+import { setCookie } from "./cookieUtils";
 
 const JWT_ACCESS_SECRET=process.env.VITE_JWT_ACCESS_SECRET;
 
@@ -13,6 +13,7 @@ const getTokenSecondsRemaining=(token:string):number=>{
         }
 
         const remainingSeconds=tokenPayload.exp as number - Math.floor(Date.now()/1000);
+
         return remainingSeconds > 0 ? remainingSeconds:0;
     }catch(error){
         console.error("Error occurred while verifying token:", error);
@@ -21,11 +22,11 @@ const getTokenSecondsRemaining=(token:string):number=>{
 }
 
 
-export const setTokenInCookie=async(
+export const setTokenInCookies=async(
     name:string,
     token:string,
     fallbackMaxAgeInSeconds = 60 * 60 * 24
 )=>{
     const maxAgeInSeconds=getTokenSecondsRemaining(token);
-    await setCookie(name,token,maxAgeInSeconds>0?maxAgeInSeconds:fallbackMaxAgeInSeconds);
+    await setCookie(name,token, maxAgeInSeconds || fallbackMaxAgeInSeconds);
 }
