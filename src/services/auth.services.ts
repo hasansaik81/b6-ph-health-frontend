@@ -22,6 +22,7 @@ export async function getNewTokensWithRefreshToken(refreshToken:string):Promise<
         }
 
         const {data}=await res.json();
+
         const {accessToken, refreshToken:newRefreshToken, token}=data;
 
         if(accessToken){
@@ -56,7 +57,7 @@ export async function getUserInfo(){
             return null;
         }
 
-        const res=await fetch(`${BASE_API_URL}/auth/me`,{
+        const res= await fetch(`${BASE_API_URL}/auth/me`,{
             method:"GET",
             headers:{
                 "Content-Type": "application/json",
