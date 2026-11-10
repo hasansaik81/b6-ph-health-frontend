@@ -1,4 +1,4 @@
-export type UserRoele="SUPER_ADMIN" | "ADMIN" | "DOCTOR" | "PATIENT";
+export type UserRole="SUPER_ADMIN" | "ADMIN" | "DOCTOR" | "PATIENT";
 
 export const authRoutes=["/login","register","/forget-password","/verify-email"];
 
@@ -70,3 +70,36 @@ export const getRouteOwner=(pathname:string):"SUPER_ADMIN" | "ADMIN" | "DOCTOR" 
     return null   // public route
   
 }   
+
+
+export const getDefaultDashboardRoute=(role:UserRole)=>{
+    if(role=== "ADMIN" || role=== "SUPER_ADMIN"){
+        return "/admin/dashboard"
+    }
+
+    if(role===  "DOCTOR"){
+        return "/doctor/dashboard";
+    }
+
+    if(role==="PATIENT"){
+        return "/dashboard";
+    }
+   return "/"
+}
+
+
+export const isValidRedirectForRole=(redirectPath : string,role:UserRole)=>{
+    const unifySuperAdminAndAdminRole=role==="SUPER_ADMIN" ? "ADMIN" :role;
+    role = unifySuperAdminAndAdminRole;
+
+    const  routeOwner=getRouteOwner(redirectPath);
+
+    if(routeOwner === null || routeOwner === "COMMON"){
+        return true
+    }
+
+    if(routeOwner === role){
+        return true
+    }
+        return false;
+}
