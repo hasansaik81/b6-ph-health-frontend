@@ -1,57 +1,59 @@
-// import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
+import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
 // import { getDoctors } from "./_actions";
-// import DoctorsList from "@/components/modules/Consultation/DoctorsList";
-
-// const ConsultationPage = async() => {
-//     const queryClient=new QueryClient();
-
-//     await queryClient.prefetchQuery({
-//         queryKey:["doctors"],
-//         queryFn:getDoctors,
-//     })
-//     return (
-//        <HydrationBoundary state={dehydrate(queryClient) }>
-//         <DoctorsList/>
-//         </HydrationBoundary>
-//     )
-// }
-// export default ConsultationPage;
-
-
-
-
-
-
-
-import { connection } from "next/server";
-import {
-  dehydrate,
-  HydrationBoundary,
-  QueryClient,
-} from "@tanstack/react-query";
-
-import { getDoctors } from "./_actions";
 import DoctorsList from "@/components/modules/Consultation/DoctorsList";
+import { getDoctors } from "@/services/doctor.services";
 
-const ConsultationPage = async () => {
-  // Force request-time rendering before accessing dynamic values
-  await connection();
+const ConsultationPage = async() => {
+    const queryClient=new QueryClient();
 
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery({
-    queryKey: ["doctors"],
-    queryFn: () => getDoctors(),
-  });
-
-  return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <DoctorsList />
-    </HydrationBoundary>
-  );
-};
-
+    await queryClient.prefetchQuery({
+        queryKey:["doctors"],
+        queryFn:getDoctors,
+    })
+    return (
+       <HydrationBoundary state={dehydrate(queryClient) }>
+        <DoctorsList/>
+        </HydrationBoundary>
+    )
+}
 export default ConsultationPage;
+
+
+
+
+
+
+
+// import { connection } from "next/server";
+// import {
+//   dehydrate,
+//   HydrationBoundary,
+//   QueryClient,
+// } from "@tanstack/react-query";
+
+// // import { getDoctors } from "./_actions";
+// import DoctorsList from "@/components/modules/Consultation/DoctorsList";
+// import { getDoctors } from "@/services/doctor.services";
+
+// const ConsultationPage = async () => {
+//   // Force request-time rendering before accessing dynamic values
+//   await connection();
+
+//   const queryClient = new QueryClient();
+
+//   await queryClient.prefetchQuery({
+//     queryKey: ["doctors"],
+//     queryFn: () => getDoctors(),
+//   });
+
+//   return (
+//     <HydrationBoundary state={dehydrate(queryClient)}>
+//       <DoctorsList />
+//     </HydrationBoundary>
+//   );
+// };
+
+// export default ConsultationPage;
 
 
 
