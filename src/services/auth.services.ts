@@ -1,3 +1,5 @@
+"use server"
+
 import { setTokenInCookies } from "@/lib/tokenUtils";
 import { cookies } from "next/headers";
 
