@@ -1,5 +1,6 @@
 import { title } from "process";
 import { getDefaultDashboardRoute, UserRole } from "./authUtils";
+import { NavSection } from "@/types/dashboard.types";
 
 export const getCommonNavItems=(role:UserRole) :NavSection[]=>{
     const defaultDashboard=getDefaultDashboardRoute(role);
@@ -43,7 +44,7 @@ export const getCommonNavItems=(role:UserRole) :NavSection[]=>{
 export const doctorNavItems:NavSection[]=[
     {
         title:"Appointments",
-        icon:[
+        items:[
             {
                 title : "Appointments",
                 href : "/doctor/dashboard/appointments",
