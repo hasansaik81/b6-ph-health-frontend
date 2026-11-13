@@ -1,29 +1,48 @@
 "use client";
 
 import DataTable from "@/components/shared/table/DataTable";
-import {
-  DataTableFilterConfig,
-  DataTableFilterValues,
-} from "@/components/shared/table/DataTableFilters";
-import {
-  serverManagedFilter,
-  useServerManagedDataTableFilters,
-} from "@/hooks/useServerManagedDataTableFilters";
-import { useServerManagedDataTableSearch } from "@/hooks/useServerManagedDataTableSearch";
-import { useRowActionModalState } from "@/hooks/useRowActionModalState";
+import { DataTableFilterConfig, DataTableFilterValues } from "@/components/shared/table/DataTableFilters";
+import { useRowActionModalState } from "@/hooks/userRowActionModalState";
+import { useServerManagedDataTable } from "@/hooks/userServerManagedDataTable";
+import { serverManagedFilter, useServerManagedDataTableFilters } from "@/hooks/userServerManagedDataTableSearch";
+import { useServerManagedDataTableSearch } from "@/hooks/userServerManageedDataTableFilters";
 import { getAllSpecialties, getDoctors } from "@/services/doctor.services";
 import { PaginationMeta } from "@/types/api.types";
 import { IDoctor } from "@/types/doctor.types";
 import { ISpecialty } from "@/types/specialty.types";
-import { useServerManagedDataTable } from "@/hooks/useServerManagedDataTable";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
+import { doctorColumns } from "./DoctorsCloumns";
 import CreateDoctorFormModal from "./CreateDoctorFormModal";
-import DeleteDoctorConfirmationDialog from "./DeleteDoctorConfirmationDialog";
 import EditDoctorFormModal from "./EditDoctorFormModal";
+import DeleteDoctorConfirmationDialog from "./DeleteDoctorConfirmation";
 import ViewDoctorProfileDialog from "./ViewDoctorProfileDialog";
-import { doctorColumns } from "./doctorsColumns";
+
+// import DataTable from "@/components/shared/table/DataTable";
+// import {
+//   DataTableFilterConfig,
+//   DataTableFilterValues,
+// } from "@/components/shared/table/DataTableFilters";
+// import {
+//   serverManagedFilter,
+//   useServerManagedDataTableFilters,
+// } from "@/hooks/useServerManagedDataTableFilters";
+// import { useServerManagedDataTableSearch } from "@/hooks/useServerManagedDataTableSearch";
+// import { useRowActionModalState } from "@/hooks/useRowActionModalState";
+// import { getAllSpecialties, getDoctors } from "@/services/doctor.services";
+// import { PaginationMeta } from "@/types/api.types";
+// import { IDoctor } from "@/types/doctor.types";
+// import { ISpecialty } from "@/types/specialty.types";
+// import { useServerManagedDataTable } from "@/hooks/useServerManagedDataTable";
+// import { useQuery } from "@tanstack/react-query";
+// import { useSearchParams } from "next/navigation";
+// import { useMemo } from "react";
+// import CreateDoctorFormModal from "./CreateDoctorFormModal";
+// import DeleteDoctorConfirmationDialog from "./DeleteDoctorConfirmationDialog";
+// import EditDoctorFormModal from "./EditDoctorFormModal";
+// import ViewDoctorProfileDialog from "./ViewDoctorProfileDialog";
+// import { doctorColumns } from "./doctorsColumns";
 
 const DEFAULT_PAGE = 1;
 const DEFAULT_LIMIT = 10;

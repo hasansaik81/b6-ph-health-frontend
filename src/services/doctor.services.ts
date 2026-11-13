@@ -1,12 +1,12 @@
 "use server"
 
 import { httpClient } from "@/lib/axios/httpClient"
-import { ICreateDoctorPayload, IDoctor, IDoctorDetails, IUpdatedDoctorPayload } from "@/types/doctor.types";
+import { ICreateDoctorPayload, IDoctor, IDoctorDetails, IUpdateDoctorPayload } from "@/types/doctor.types";
 import { ISpecialty } from "@/types/specialty.types";
 
-export const getDoctors=async()=>{
+export const getDoctors=async(queryString:string)=>{
     try{
-        const doctors= await httpClient.get<IDoctor[]>('/doctors');
+        const doctors= await httpClient.get<IDoctor[]>(queryString? `/doctors?${queryString}`:"/doctors");
         return doctors;
     }catch(error){
         console.log("Error fetching doctors:", error);
@@ -37,8 +37,9 @@ export const createDoctor=async(payload:ICreateDoctorPayload)=>{
 }
 
 
-export const updateDoctor=async(id:string,payload:IUpdatedDoctorPayload)=>{
+export const updateDoctor=async(id:string,payload:IUpdateDoctorPayload)=>{
     try{const response = await httpClient.patch<IDoctor>(`/doctor/${id}`,payload)
+    return response
 }catch(error){
     console.log("Error updating doctor:", error);
     throw error

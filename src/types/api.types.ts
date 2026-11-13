@@ -1,21 +1,47 @@
-export interface ApiResponse<TData=unknown> {
-    success: boolean;
-    message: string;
-    data: TData;
-    meta?: PaginationMeta;
+// export interface ApiResponse<TData=unknown> {
+//     success: boolean;
+//     message: string;
+//     data: TData;
+//     meta?: PaginationMeta;
+// }
+
+
+// export interface PaginationMeta {
+//     total: number;
+//     page: number;
+//     limit: number;
+//     totalPages: number;
+// }
+
+
+// export interface ApiErrorResponse {
+//     success: boolean;
+//     message: string;
+    
+// }
+
+
+
+
+export interface ApiResponse<TData = unknown> {
+  success: true;
+  message: string;
+  data: TData;
+  meta?: PaginationMeta;
 }
-
-
-export interface PaginationMeta {
-    total: number;
-    page: number;
-    limit: number;
-    totalPages: number;
-}
-
 
 export interface ApiErrorResponse {
-    success: boolean;
-    message: string;
-    
+  success: false;
+  message: string;
 }
+
+export interface PaginationMeta {
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+}
+
+export type ApiResult<TData = unknown> =
+  | ApiResponse<TData>
+  | ApiErrorResponse;

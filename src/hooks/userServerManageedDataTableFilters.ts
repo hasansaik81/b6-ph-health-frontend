@@ -1,7 +1,9 @@
 "use client";
 
 import { useCallback, useMemo } from "react";
-import { UpdateParamsFn } from "./useServerManagedDataTable";
+import { UpdateParamsFn } from "./userServerManagedDataTable";
+import { ReadonlyURLSearchParams } from "next/navigation";
+
 
 interface UseServerManagedDataTableSearchParams {
   searchParams: ReadonlyURLSearchParams;
