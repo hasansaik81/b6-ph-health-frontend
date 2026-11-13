@@ -1,4 +1,4 @@
-enum Gender {
+export enum Gender {
     MALE = "MALE",
     FEMALE = "FEMALE",
     OTHER = "OTHER"
@@ -65,7 +65,7 @@ export interface IUpdateDoctorSpecialtyChange {
 }
 
 
-export interface IUpdatedDoctorPayload {
+export interface IUpdateDoctorPayload {
     doctor?: {
         name?: string;
         contactNumber?: string;
@@ -142,5 +142,5 @@ export interface IDoctorDetails extends IDoctor {
      user:IDoctorUserDetails;
      appointments?:IDoctorAppointmentItem[];
      doctorSchedules?:IDoctorScheduleItem[];
-     neviews?:IDoctorReview[];
+     reviews?:IDoctorReview[];
 }
