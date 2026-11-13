@@ -1,3 +1,6 @@
+  
+"use server"
+  
   import jwt, { JwtPayload } from "jsonwebtoken";
 import { setCookie } from "./cookieUtils";
 
@@ -12,7 +15,7 @@ const getTokenSecondsRemaining=(token:string):number=>{
             return 0;
         }
 
-        const remainingSeconds=tokenPayload.exp as number - Math.floor(Date.now()/1000);
+        const remainingSeconds=(tokenPayload.exp as number) - Math.floor(Date.now()/1000);
 
         return remainingSeconds > 0 ? remainingSeconds:0;
     }catch(error){
