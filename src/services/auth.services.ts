@@ -43,9 +43,10 @@ export async function getNewTokensWithRefreshToken(refreshToken:string):Promise<
         return true
     }catch(error){
         console.error("Error refreshing token:", error);
+         return false
     }
 
-    return false
+    
 }
 
 

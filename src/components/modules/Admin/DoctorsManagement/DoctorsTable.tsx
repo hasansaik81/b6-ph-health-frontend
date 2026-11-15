@@ -2,10 +2,10 @@
 
 import DataTable from "@/components/shared/table/DataTable";
 import { DataTableFilterConfig, DataTableFilterValues } from "@/components/shared/table/DataTableFilters";
-import { useRowActionModalState } from "@/hooks/userRowActionModalState";
-import { useServerManagedDataTable } from "@/hooks/userServerManagedDataTable";
-import { serverManagedFilter, useServerManagedDataTableFilters } from "@/hooks/userServerManagedDataTableSearch";
-import { useServerManagedDataTableSearch } from "@/hooks/userServerManageedDataTableFilters";
+import { useRowActionModalState } from "@/hooks/useRowActionModalState";
+import { useServerManagedDataTable } from "@/hooks/useServerManagedDataTable";
+import { serverManagedFilter, useServerManagedDataTableFilters } from "@/hooks/useServerManagedDataTableSearch";
+import { useServerManagedDataTableSearch } from "@/hooks/useServerManagedDataTableFilters";
 import { getAllSpecialties, getDoctors } from "@/services/doctor.services";
 import { PaginationMeta } from "@/types/api.types";
 import { IDoctor } from "@/types/doctor.types";
