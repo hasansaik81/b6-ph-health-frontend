@@ -7,7 +7,8 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog"
-import { type IDoctorSchedule } from "@/types/doctorSchedule.types"
+import { IDoctorSchedule } from "@/types/doctorSchedule.types"
+// import { type IDoctorSchedule } from "@/types/doctorSchedule.types"
 import { differenceInMinutes, format } from "date-fns"
 
 interface ViewMyScheduleDialogProps {
