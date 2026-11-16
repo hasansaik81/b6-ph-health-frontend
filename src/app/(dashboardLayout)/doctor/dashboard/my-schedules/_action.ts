@@ -6,11 +6,12 @@ import {
     updateMyDoctorSchedule,
 } from "@/services/doctorSchedule.services"
 import { type ApiErrorResponse, type ApiResponse } from "@/types/api.types"
-import {
-    type ICreateDoctorSchedulePayload,
-    type IDoctorSchedule,
-    type IUpdateDoctorSchedulePayload,
-} from "@/types/doctorSchedule.types"
+import { ICreateDoctorSchedulePayload, IDoctorSchedule, IUpdateDoctorSchedulePayload } from "@/types/doctorSchedule.types"
+// import {
+//     type ICreateDoctorSchedulePayload,
+//     type IDoctorSchedule,
+//     type IUpdateDoctorSchedulePayload,
+// } from "@/types/doctorSchedule.types"
 import {
     createDoctorScheduleServerZodSchema,
     updateDoctorScheduleServerZodSchema,
