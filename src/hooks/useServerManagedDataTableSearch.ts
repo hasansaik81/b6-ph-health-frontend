@@ -179,6 +179,7 @@
 
 import { useCallback, useMemo } from "react";
 import { UpdateParamsFn } from "./useServerManagedDataTable";
+import { ReadonlyURLSearchParams } from "next/navigation";
 
 interface UseServerManagedDataTableSearchParams {
   searchParams: ReadonlyURLSearchParams;
